@@ -71,6 +71,11 @@ for (const menuLink of menuLinks) {
   menuLink.addEventListener("click", handleMenuLinkClick);
 }
 
+//Hero Call to Action
+const calltoAction = document.querySelector(".btnlink");
+
+calltoAction.addEventListener("click", handleMenuLinkClick);
+
 // Send email using EmailJS
 function sendEmail(event) {
   event.preventDefault();
@@ -114,54 +119,53 @@ const reveal = () => {
 window.addEventListener("scroll", reveal);
 
 //Contact Form Validation
-const form = document.getElementById("contact-form");
-const nameInput = document.getElementById("user_name");
-const emailInput = document.getElementById("user_email");
-const phoneInput = document.getElementById("contact_number");
-const messageInput = document.getElementById("message");
+const form = document.querySelector("#contact-form");
+const nameInput = document.querySelector("#name");
+const emailInput = document.querySelector("#email");
+const phoneInput = document.querySelector("#phone");
+const messageInput = document.querySelector("#message");
+const resultDiv = document.querySelector(".result");
 
-form.addEventListener("submit", (event) => {
-  let messages = [];
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  let errors = [];
 
-  if (nameInput.value === "" || nameInput.value == null) {
-    messages.push("Name is required");
+  // Validate name field
+  if (nameInput.value === "") {
+    errors.push("Name field cannot be empty");
   }
 
-  if (emailInput.value === "" || emailInput.value == null) {
-    messages.push("Email is required");
+  // Validate email field
+  if (emailInput.value === "") {
+    errors.push("Email field cannot be empty");
   } else if (!isValidEmail(emailInput.value)) {
-    messages.push("Email is invalid");
+    errors.push("Invalid email address");
   }
 
-  if (phoneInput.value === "" || phoneInput.value == null) {
-    messages.push("Phone number is required");
-  } else if (!isValidPhone(phoneInput.value)) {
-    messages.push("Phone number is invalid");
+  // Validate phone field
+  if (phoneInput.value === "") {
+    errors.push("Phone field cannot be empty");
+  } else if (!isValidPhoneNumber(phoneInput.value)) {
+    errors.push("Invalid phone number");
   }
 
-  if (messageInput.value === "" || messageInput.value == null) {
-    messages.push("Message is required");
-  }
-
-  if (messages.length > 0) {
-    event.preventDefault();
-    const result = document.querySelector(".result");
-    result.innerHTML =
-      "<ul>" +
-      messages.map((message) => "<li>" + message + "</li>").join("") +
-      "</ul>";
+  // Show errors or submit the form
+  if (errors.length > 0) {
+    resultDiv.innerHTML = errors.join("<br>");
+  } else {
+    form.submit();
   }
 });
 
+// Helper functions for email and phone number validation
 function isValidEmail(email) {
-  // Regular expression to validate email format
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(email);
 }
 
-function isValidPhone(phone) {
-  // Regular expression to validate phone number format
-  const phoneRegex = /^(\+?\d{11,14})$/;
+// Helper function for phone number validation
+function isValidPhoneNumber(phone) {
+  const phoneRegex = /^\+?\d{11,14}$/;
   return phoneRegex.test(phone);
 }
 

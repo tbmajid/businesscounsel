@@ -271,6 +271,9 @@ ul li .active {
   padding: var(--section-padding);
 }
 
+.comment h3 {
+  color: var(--section-bgcolor);
+}
 .services {
   padding: var(--section-padding);
 }
