@@ -1,7 +1,7 @@
 :root {
   --doc-height: 100%;
   --primary-color: #39b54a;
-  --secondary-color: #50a587;
+  --secondary-color: #006a56;
   --forground-color: #ffffff;
   --third-color: #ea6953;
   --section-bgcolor: #272727;
@@ -33,12 +33,15 @@ a {
 
 h1 {
   font-size: 2.5rem;
+  text-transform: uppercase;
 
+  padding-left: 1rem;
+  padding-right: 1rem;
   text-transform: uppercase;
 }
 
 h2 {
-  font-size: 2rem;
+  font-size: 1.5rem;
   text-transform: uppercase;
   text-align: center;
 }
@@ -108,7 +111,7 @@ ul li .active {
   justify-content: center;
   align-items: center;
   color: var(--forground-color);
-  background-color: var(--secondary-color);
+  background-color: #051645;
   padding: 1rem;
   height: 100dvh;
   height: 100vh;
@@ -124,17 +127,8 @@ ul li .active {
   padding-bottom: var(--section-padding);
 }
 
-.slogan > h1 {
-  text-transform: uppercase;
-  background-color: var(--section-bgcolor);
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
-.slogan > h3 {
-  color: #b1b4b3;
-  text-transform: capitalize;
-  background-color: var(--section-bgcolor);
+.slogan > h2 {
+  font-size: 1rem;
 }
 
 .calltoaction {
@@ -145,12 +139,14 @@ ul li .active {
 }
 
 .calltoaction > .button {
-  background-color: #0e32ac;
+  color: var(--section-bgcolor);
+  background-color: var(--primary-color);
+  font-weight: 800;
 }
 
 .calltoaction > .button:hover {
-  color: #272727;
-  background-color: var(--primary-color);
+  color: var(--forground-color);
+  background-color: #0e32ac;
 }
 
 .about-us {
@@ -199,7 +195,7 @@ ul li .active {
   content: " ";
   display: block;
   height: 0.1em;
-  width: 8em;
+  width: 6em;
   position: absolute;
   top: 50%;
   left: 0;
@@ -209,7 +205,7 @@ ul li .active {
 .clients-title::after {
   content: " ";
   height: 0.1em;
-  width: 8em;
+  width: 6em;
   background: #b1b4b3;
   display: block;
   position: absolute;
@@ -248,7 +244,7 @@ ul li .active {
 
 .testimonials-container {
   background-color: #dac55f;
-  color: var(--forground-color);
+  color: var(--section-bgcolor);
   padding: var(--section-padding);
   z-index: 1;
 }
@@ -343,22 +339,24 @@ ul li .active {
 .call-back {
   display: flex;
   flex-direction: column;
-  padding: var(--section-padding);
+  padding: 1rem;
   justify-content: center;
   align-items: center;
-  background-color: var(--primary-color);
-  height: 20rem;
-  margin-bottom: 3rem;
+  background-color: var(--secondary-color);
 }
 
-.call-back h2 {
+.call-back h2,
+h3 {
   color: var(--forground-color);
 }
 
-.call-back button {
-  border: solid 0.1rem;
-  width: auto;
-  margin-top: 2rem;
+.call-back h3 {
+  text-decoration: underline;
+}
+.call-back p {
+  max-width: 75ch;
+  text-align: center;
+  color: var(--forground-color);
 }
 
 label {
@@ -372,10 +370,10 @@ label:after {
 
 .contact-form {
   display: block;
+  margin-top: 1rem;
   margin-left: auto;
   margin-right: auto;
   padding: var(--section-padding);
-  margin-top: -3rem;
 }
 
 input[type="text"],
@@ -386,7 +384,7 @@ textarea {
   display: block;
   margin: 1rem auto;
   padding: 0.8rem;
-  width: 25rem;
+  width: 20rem;
   border-radius: var(--border-radius);
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
 }
@@ -399,7 +397,7 @@ input[type="submit"] {
   padding: 0.4rem;
   margin: auto;
   border-radius: var(--border-radius);
-  width: 25rem;
+  width: 10rem;
 }
 
 .footer {
@@ -430,6 +428,7 @@ input[type="submit"] {
 }
 
 .copyright {
+  font-size: 0.8rem;
   text-align: center;
   align-self: center;
 }
@@ -530,7 +529,10 @@ input[type="submit"] {
 
 /* Media Queries */
 
-@media (max-width: 768px) {
+@media (max-width: 48em) {
+  h1 {
+    font-size: 2rem;
+  }
   .hero {
     flex-direction: column-reverse;
   }
