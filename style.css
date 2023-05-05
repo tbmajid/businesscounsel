@@ -2,6 +2,7 @@
   --doc-height: 100%;
   --primary-color: #39b54a;
   --secondary-color: #006a56;
+  --hover-color: #0d32ac;
   --forground-color: #ffffff;
   --third-color: #ea6953;
   --section-bgcolor: #272727;
@@ -33,11 +34,11 @@ a {
 
 h1 {
   font-size: 2.5rem;
-  text-transform: uppercase;
+
+  line-height: 3rem;
 
   padding-left: 1rem;
   padding-right: 1rem;
-  text-transform: uppercase;
 }
 
 h2 {
@@ -83,7 +84,7 @@ nav ul a:hover {
 }
 
 .button {
-  color: var(--forground-color);
+  color: var(--section-bgcolor);
   background-color: var(--primary-color);
   border: none;
   padding: 1rem;
@@ -91,10 +92,12 @@ nav ul a:hover {
   width: 10rem;
   cursor: pointer;
   border-radius: var(--border-radius);
+  font-weight: 900;
 }
 
 .button:hover {
-  background-color: var(--secondary-color);
+  color: var(--forground-color);
+  background-color: var(--hover-color);
 
   cursor: pointer;
 }
@@ -136,17 +139,6 @@ ul li .active {
   gap: 2rem;
   padding: 2rem;
   margin-bottom: 2rem;
-}
-
-.calltoaction > .button {
-  color: var(--section-bgcolor);
-  background-color: var(--primary-color);
-  font-weight: 800;
-}
-
-.calltoaction > .button:hover {
-  color: var(--forground-color);
-  background-color: #0e32ac;
 }
 
 .about-us {
@@ -289,7 +281,6 @@ ul li .active {
 .footer-image img {
   display: block;
   margin: auto;
-  max-width: 100px;
 }
 
 .services-card-container {
