@@ -152,7 +152,7 @@ const form = document.querySelector("#contact-form");
 const nameInput = document.querySelector("#name");
 const emailInput = document.querySelector("#email");
 const phoneInput = document.querySelector("#phone");
-const messageInput = document.querySelector("#message");
+
 let resultDiv = document.querySelector(".result");
 
 // Helper functions for email and phone number validation

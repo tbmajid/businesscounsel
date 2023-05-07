@@ -344,9 +344,6 @@ h3 {
   color: var(--forground-color);
 }
 
-.call-back h3 {
-  text-decoration: underline;
-}
 .call-back p {
   max-width: 75ch;
   text-align: center;
@@ -357,14 +354,11 @@ label {
   font-weight: bold;
   display: block;
   text-align: center;
-}
-label:after {
-  content: ": ";
+  margin-bottom: -1rem;
 }
 
 .contact-form {
   display: block;
-
   margin-left: auto;
   margin-right: auto;
   padding: var(--section-padding);
@@ -415,6 +409,7 @@ input[type="submit"] {
 .address {
   padding: var(--section-padding);
   color: var(--forground-color);
+  text-align: center;
 }
 
 .googlemap {
