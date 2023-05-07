@@ -76,29 +76,6 @@ const calltoAction = document.querySelector(".btnlink");
 
 calltoAction.addEventListener("click", handleMenuLinkClick);
 
-// Send email using EmailJS
-function sendEmail(event) {
-  event.preventDefault();
-  emailjs.sendForm("service_he34dcx", "template_qel9bgo", this).then(
-    function () {
-      window.location.replace("/success.html");
-    },
-    function (error) {
-      console.log("FAILED...", error);
-    }
-  );
-}
-
-function initEmailJS() {
-  emailjs.init("zFcvTNO1cZrAy2Nuj");
-}
-
-window.addEventListener("load", function () {
-  const contactForm = document.getElementById("contact-form");
-  contactForm.addEventListener("submit", sendEmail);
-  initEmailJS();
-});
-
 //Section Animation
 
 const reveal = () => {
@@ -119,16 +96,8 @@ const reveal = () => {
 window.addEventListener("scroll", reveal);
 
 //Contact Form Validation
-const form = document.querySelector("#contact-form");
-const nameInput = document.querySelector("#name");
-const emailInput = document.querySelector("#email");
-const phoneInput = document.querySelector("#phone");
-const messageInput = document.querySelector("#message");
-const resultDiv = document.querySelector(".result");
-
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-  let errors = [];
+function sendEmail() {
+  const errors = [];
 
   // Validate name field
   if (nameInput.value === "") {
@@ -153,9 +122,38 @@ form.addEventListener("submit", (e) => {
   if (errors.length > 0) {
     resultDiv.innerHTML = errors.join("<br>");
   } else {
-    form.submit();
+    emailjs.sendForm("service_he34dcx", "template_qel9bgo", form).then(
+      function () {
+        resultDiv.innerHTML = "Thank You! We will get back to you soon.";
+      },
+      function (error) {
+        console.log("FAILED...", error);
+        resultDiv.innerHTML = "Message failed to send.";
+      }
+    );
   }
+}
+
+function initEmailJS() {
+  emailjs.init("zFcvTNO1cZrAy2Nuj");
+}
+
+window.addEventListener("load", function () {
+  const contactForm = document.getElementById("contact-form");
+  contactForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+    sendEmail();
+  });
+  initEmailJS();
 });
+
+//Contact Form Validation
+const form = document.querySelector("#contact-form");
+const nameInput = document.querySelector("#name");
+const emailInput = document.querySelector("#email");
+const phoneInput = document.querySelector("#phone");
+const messageInput = document.querySelector("#message");
+let resultDiv = document.querySelector(".result");
 
 // Helper functions for email and phone number validation
 function isValidEmail(email) {
@@ -168,8 +166,3 @@ function isValidPhoneNumber(phone) {
   const phoneRegex = /^\+?\d{11,14}$/;
   return phoneRegex.test(phone);
 }
-
-//Copyright Current Year
-
-const currentYear = new Date().getFullYear();
-document.querySelector(".current-year").innerHTML = currentYear;
