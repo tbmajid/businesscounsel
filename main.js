@@ -166,3 +166,8 @@ function isValidPhoneNumber(phone) {
   const phoneRegex = /^\+?\d{11,14}$/;
   return phoneRegex.test(phone);
 }
+
+//Footer Current Year
+
+const currentYear = new Date().getFullYear();
+document.getElementById("current-year").innerHTML = currentYear;
