@@ -170,4 +170,4 @@ function isValidPhoneNumber(phone) {
 //Footer Current Year
 
 const currentYear = new Date().getFullYear();
-document.getElementById("current-year").innerHTML = currentYear;
+document.querySelector(".current-year").innerHTML = currentYear;
